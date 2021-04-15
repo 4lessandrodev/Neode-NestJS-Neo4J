@@ -1,5 +1,6 @@
 import { SchemaObject } from 'neode';
-export const UserSchema: SchemaObject = {
+
+const UserSchema: SchemaObject = {
   id: {
     type: 'uuid',
     primary: true,
@@ -18,6 +19,7 @@ export const UserSchema: SchemaObject = {
   },
   password: { type: 'string', required: true },
   avatar: 'string',
-  firstAuth: 'boolean',
-  confirmedEmail: 'boolean',
+  isFirstAuth: 'boolean',
 };
+
+export default UserSchema;

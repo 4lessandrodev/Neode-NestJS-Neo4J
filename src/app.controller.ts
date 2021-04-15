@@ -1,12 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
-import { Neo4jService } from 'nest-neo4j/dist';
+import { Controller, Get, Inject } from '@nestjs/common';
+import { LoggerService } from './logger-module/logger.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly service: Neo4jService) {}
+  constructor(
+    @Inject(LoggerService)
+    private readonly service: LoggerService,
+  ) {}
 
   @Get()
   async getHello(): Promise<string> {
-    return 'Running';
+    this.service.log('I was injected from root');
+    return JSON.stringify(this.service);
   }
 }
