@@ -35,7 +35,7 @@ export class NeodeModule {
   static forFeature(schema: SchemaObject): DynamicModule {
     return {
       module: NeodeModule,
-      global: true,
+      global: false,
       providers: [
         {
           provide: 'SCHEMA',
