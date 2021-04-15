@@ -1,5 +1,5 @@
 import { Global, Module, DynamicModule } from '@nestjs/common';
-import Neode, { SchemaObject } from 'neode';
+import * as Neode from 'neode';
 
 @Global()
 @Module({})
@@ -11,13 +11,13 @@ export class NeodeModule {
       providers: [
         {
           provide: 'DIRECTORY',
-          useValue: directory,
+          useValue: directory ?? null,
         },
         {
           provide: Neode,
           useFactory: async () => {
             let connection: Neode;
-            if (directory) {
+            if (typeof directory === 'string') {
               connection = await Neode.fromEnv().withDirectory(directory);
               await connection.schema.install();
             } else {
@@ -32,7 +32,7 @@ export class NeodeModule {
     };
   }
 
-  static forFeature(schema: SchemaObject): DynamicModule {
+  static forFeature(schema: Neode.SchemaObject): DynamicModule {
     return {
       module: NeodeModule,
       global: false,
