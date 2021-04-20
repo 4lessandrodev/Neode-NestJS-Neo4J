@@ -1,7 +1,10 @@
 import { Global, Module, DynamicModule, Logger } from '@nestjs/common';
 import * as Neode from 'neode';
 
-interface Config {
+// Just handle warn on terminal
+const handleWarn = (schema: string)=> new Logger('NeodeModule', true).console.warn(`Could not install schema ${schema}. Already installed ?`);
+
+interface Schema {
   [label: string]: Neode.SchemaObject;
 }
 
@@ -9,42 +12,24 @@ interface Config {
 @Module({})
 export class NeodeModule {
   /**
-   *
-   * @param directory schemas folder as path example: `src/infra/schemas`
-   * @returns instance of Neode as connection
+   * @description ensure you have a .env file with neo4j connection settings
+   * @returns Connection as Neode instance
    */
-  static forRoot(directory?: string): DynamicModule {
+  static forRoot(): DynamicModule {
     return {
       module: NeodeModule,
       global: true,
       providers: [
         {
-          provide: 'DIRECTORY',
-          useValue: directory ?? null,
-        },
-        {
           provide: 'Connection',
           useFactory: async () => {
             let connection: Neode;
-            if (typeof directory === 'string') {
-              connection = await Neode.fromEnv().withDirectory(directory);
 
-              // Why error if already installed?
-              try {
-                await connection.schema.install();
-              } catch (error) {
-                new Logger('NeodeModule', true).warn(
-                  `Could not install schemas from directory ${directory}. Already installed?`,
-                );
-              }
-            } else {
               connection = await Neode.fromEnv();
-            }
-
+          
             return connection;
           },
-          inject: ['DIRECTORY'],
-        },
+        }
       ],
       exports: ['Connection'],
     };
@@ -52,33 +37,29 @@ export class NeodeModule {
 
   /**
    *
-   * @param config key: as label name and value: Node definition as `SchemaObject`
+   * @param schema key: as label name and value: Node definition as `SchemaObject`
    * example: `{ User: UserSchema }`
    * @returns Instance of Neode as connection for module
    */
-  static forFeature(config: Config): DynamicModule {
+  static forFeature(schema: Schema): DynamicModule {
     return {
       module: NeodeModule,
       global: false,
       providers: [
         {
           provide: 'CONFIG',
-          useValue: config,
+          useValue: schema,
         },
         {
           provide: 'Connection',
           useFactory: async () => {
-            const connection = await Neode.fromEnv().with(config);
+            const connection = await Neode.fromEnv().with(schema);
 
-            // Why error if already installed?
+            // If schema already installed It handle error
             try {
               await connection.schema.install();
             } catch (error) {
-              new Logger('NeodeModule', true).error(
-                `Could not install schema ${Object.keys(
-                  config,
-                )}. Already installed ?`,
-              );
+              handleWarn(Object.keys(schema)[0]);
             }
             return connection;
           },

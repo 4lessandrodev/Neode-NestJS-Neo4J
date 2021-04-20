@@ -8,18 +8,26 @@ const UserSchema: SchemaObject = {
   },
   name: {
     type: 'string',
-    indexed: true,
+    /**
+     * @todo Remove indexed comment when pull request #151 be merged
+     * @description on typescript handle error on try indexed schema attribute on neo4j 
+     */
+   /*  indexed: true, */
     required: true,
   },
   email: {
     type: 'string',
-    indexed: true,
+  /*   indexed: true, */
     unique: true,
     required: true,
   },
   password: { type: 'string', required: true },
-  avatar: 'string',
-  isFirstAuth: 'boolean',
+  avatar: {
+    type: 'string'
+  },
+  isFirstAuth: {
+    type: 'boolean'
+  },
 };
 
 export default UserSchema;

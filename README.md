@@ -1,34 +1,40 @@
 # Graph Neode Neo4J with NestJS
 
-```shell
-How to run this project
 
-git clone https://github.com/4lessandrodev/Neode-NestJS.git
+#### How to run this project
 
-cd Neode-NestJS
+`git clone https://github.com/4lessandrodev/Neode-NestJS.git`
 
-yarn install
 
-docker-compose up -d
+`cd Neode-NestJS`
 
-open browser on http://localhost:7474
 
-connect with user: neo4j password: neo4j
+`yarn install`
 
-set your new password
 
-create a .env file on project root. follow .env.example
+`docker-compose up -d`
 
-run application
+#### open browser on http://localhost:7474
 
-yarn start:dev
+#### connect with 
 
-```
+user: `neo4j` password: `neo4j`
+
+#### set your new password
+
+create a .env file on project root. follow `.env.example`
+
+#### ensure your .env has your new database password
+
+#### run application
+
+`yarn start:dev`
+
+---
 
 ### Avaliable endpoints
 
-POST - Create a new user
-`http://localhost:3000/v1/users`
+POST - Create a new user `http://localhost:3000/v1/users`
 
 ```json
 {
@@ -39,4 +45,12 @@ POST - Create a new user
 }
 ```
 
-GET - List all users
+GET - List all users `http://localhost:3000/v1/users`
+
+---
+
+I'm waiting for acceptance of pull request # 151 to resolve the schema indexed error.
+
+[Pull Request #151](https://github.com/adam-cowley/neode/pull/151)
+
+[Error on schema](./src/neode-module/schemas/user.schema.ts)
