@@ -25,7 +25,7 @@ export class NeodeModule {
           useFactory: async () => {
             let connection: Neode;
 
-              connection = await Neode.fromEnv();
+            connection = await Neode.fromEnv();
           
             return connection;
           },
@@ -55,13 +55,17 @@ export class NeodeModule {
           useFactory: async () => {
             const connection = await Neode.fromEnv().with(schema);
 
-            // If schema already installed It handle error
+            // If schema already installed It handle warn
             try {
               await connection.schema.install();
+
             } catch (error) {
               handleWarn(Object.keys(schema)[0]);
+
+            } finally {
+              return connection;
+
             }
-            return connection;
           },
           inject: ['CONFIG'],
         },
