@@ -631,7 +631,7 @@
     webpack "5.28.0"
     webpack-node-externals "2.5.2"
 
-"@nestjs/common@^7.4.2", "@nestjs/common@^7.6.13":
+"@nestjs/common@^7.6.13":
   version "7.6.15"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.15.tgz#ae96f18cb6209a21724ffa7ed1a182be1e4fd0af"
   integrity sha512-H/3Nk7M02Fc4YN9St05i34gZKVuzE54gd5eXAX6WwisqU5fQ00kss1pYGbltjb2QGu3A/fpO1MdYEwOA18Z/VQ==
@@ -640,17 +640,6 @@
     iterare "1.2.1"
     tslib "2.1.0"
     uuid "8.3.2"
-
-"@nestjs/config@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/config/-/config-0.5.0.tgz#ad1110d937ec26941b8fce5f575859046f8d7b4b"
-  integrity sha512-8vgakV722qNt3YBHbvhfwcNRLlwOv37pr5/1RUn5mYMmUh7JKobVNqHgTRWEuJK4BK3dCrhnjxPMPvHOCaA4LQ==
-  dependencies:
-    dotenv "8.2.0"
-    dotenv-expand "5.1.0"
-    lodash.get "4.4.2"
-    lodash.set "4.3.2"
-    uuid "8.1.0"
 
 "@nestjs/config@^0.6.3":
   version "0.6.3"
@@ -664,7 +653,7 @@
     lodash.set "4.3.2"
     uuid "8.3.2"
 
-"@nestjs/core@^7.4.2", "@nestjs/core@^7.6.13":
+"@nestjs/core@^7.6.13":
   version "7.6.15"
   resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.15.tgz#dfcc5a7804c10d07f81dde514804b484b909d08a"
   integrity sha512-8CrL/iY5Gt4HJfyDg1PgPalhT7tVRT643f2mGMgPum/P/e94uuwEYBNIgsMEVOJUrOAWZkNIN60uEf8JkH6GWw==
@@ -4312,7 +4301,7 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-neo4j-driver@^4.1.0, neo4j-driver@^4.1.2, neo4j-driver@^4.2.2, neo4j-driver@^4.2.3:
+neo4j-driver@^4.1.2, neo4j-driver@^4.2.2, neo4j-driver@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/neo4j-driver/-/neo4j-driver-4.2.3.tgz#238c98cef329ff0fb11f9884360c4ff4650b2409"
   integrity sha512-HCJ7+J5V/5yhP+b6G2zTb7SKlAN/oLYaMkD8Bo8L9veScDtgDHBlbkbYEHf1YSAd67OfjZKeF9l84J8Kjdw91g==
@@ -4339,17 +4328,6 @@ neode@^0.4.7:
     dotenv "^4.0.0"
     neo4j-driver "^4.2.2"
     uuid "^3.4.0"
-
-nest-neo4j@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/nest-neo4j/-/nest-neo4j-0.1.4.tgz#401d8a43610c86159698676fbd12a66f8f0a27e7"
-  integrity sha512-7TwjpszA/1vTXHjqMFdsdyYtTZ4IkMyPuB9cyoogz3owyrgwcrzENpiryEWiTuwPrKeoReHDU25FSlKlKaDlDw==
-  dependencies:
-    "@nestjs/common" "^7.4.2"
-    "@nestjs/config" "^0.5.0"
-    "@nestjs/core" "^7.4.2"
-    neo4j-driver "^4.1.0"
-    reflect-metadata "^0.1.13"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -5983,11 +5961,6 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
-
-uuid@8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.1.0.tgz#6f1536eb43249f473abc6bd58ff983da1ca30d8d"
-  integrity sha512-CI18flHDznR0lq54xBycOVmphdCYnQLKn8abKn7PXUiKUGdEd+/l9LWNJmugXel4hXq7S+RMNl34ecyC9TntWg==
 
 uuid@8.3.2, uuid@^8.3.0, uuid@^8.3.2:
   version "8.3.2"

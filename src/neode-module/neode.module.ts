@@ -2,7 +2,10 @@ import { Global, Module, DynamicModule, Logger } from '@nestjs/common';
 import * as Neode from 'neode';
 
 // Just handle warn on terminal
-const handleWarn = (schema: string)=> new Logger('NeodeModule', true).console.warn(`Could not install schema ${schema}. Already installed ?`);
+const handleWarn = (schema: string) =>
+  new Logger('NeodeModule', true).warn(
+    `Could not install schema ${schema}. Already installed ?`,
+  );
 
 interface Schema {
   [label: string]: Neode.SchemaObject;
@@ -23,13 +26,11 @@ export class NeodeModule {
         {
           provide: 'Connection',
           useFactory: async () => {
-            let connection: Neode;
+            const connection: Neode = await Neode.fromEnv();
 
-            connection = await Neode.fromEnv();
-          
             return connection;
           },
-        }
+        },
       ],
       exports: ['Connection'],
     };
@@ -58,13 +59,10 @@ export class NeodeModule {
             // If schema already installed It handle warn
             try {
               await connection.schema.install();
-
             } catch (error) {
               handleWarn(Object.keys(schema)[0]);
-
             } finally {
               return connection;
-
             }
           },
           inject: ['CONFIG'],
