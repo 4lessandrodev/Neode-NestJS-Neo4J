@@ -16,7 +16,6 @@ export class UserService {
     this.logger.log('Create User');
     dto.id = uuid();
     dto.isFirstAuth = true;
-    console.log(this.neode);
 
     await this.neode.merge('User', dto);
     this.logger.log('User has been created');
