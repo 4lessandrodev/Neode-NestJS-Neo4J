@@ -53,4 +53,4 @@ I'm waiting for acceptance of pull request # 151 to resolve the schema indexed e
 
 [Pull Request #151](https://github.com/adam-cowley/neode/pull/151)
 
-[Error on schema](./src/neode-module/schemas/user.schema.ts)
+[Error on schema](./src/user-module/schemas/user.schema.ts)
